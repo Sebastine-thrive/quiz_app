@@ -1,6 +1,7 @@
 import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import { AnswerObject } from '../App'
+import { AnswerObject } from '../App';
+import { Wrapper, ButtonWrapper } from './QuestionCardStyles'
 
 
 
@@ -15,7 +16,7 @@ type QuestionProps = {
 
 const QuestionCard: React.FC<QuestionProps> = ({ question, answers, callback, userAnswer, questionNum, totalQuestions }) => {
     return (
-        <div>
+        <Wrapper>
             <p className='number'>
                 Question: {questionNum}/ {totalQuestions}
             </p>
@@ -23,14 +24,18 @@ const QuestionCard: React.FC<QuestionProps> = ({ question, answers, callback, us
 
             <div>
                 {answers.map(answer => (
-                    <div key={uuidv4()}>
+                    <ButtonWrapper 
+                    key={uuidv4()}
+                    correct={userAnswer?.correctAnswer === answer}
+                    userClicked = {userAnswer?.answer === answer}
+                    >
                         <button disabled={userAnswer ? true : false} value={answer}  onClick={callback}>
                             <span dangerouslySetInnerHTML={{ __html: answer }}></span>
                         </button>
-                    </div>
+                    </ButtonWrapper>
                 ))}
             </div>
-        </div>
+        </Wrapper>
     )
 }
 

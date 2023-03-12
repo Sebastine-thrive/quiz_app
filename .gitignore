@@ -23,3 +23,5 @@ yarn-debug.log*
 yarn-error.log*
 
 # https://opentdb.com/api.php?amount=10
+# font-family: 'Chakra Petch', sans-serif;
+# font-family: 'Shantell Sans', cursive;
